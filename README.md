@@ -1,9 +1,10 @@
+
 # Bias--Variance Decomposition for Side Channel Analysis
 This repository contains code related to the 'Bias-variance Decomposition in Machine Learning-based Side-channel analysis' paper. Scripts for the following purposes are attached:
   - Train and evaluate classifiers, changing either the:
-	  - Number of features
-	  - Complexity of the machine learning model
-	  - Number of traces used for profiling
+	  - Number of features ([training](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/numfeatures_training.py), [conversion](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/numfeatures_conversion.py), [plotting](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/numfeatures_plots.py))
+	  - Complexity of the machine learning model ([training](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/complexity_training.py), [conversion](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/complexity_conversion.py), [plotting](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/complexity_plots.py))
+	  - Number of traces used for profiling ([training](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/numtraces_training.py), [conversion](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/numtraces_conversion.py), [plotting](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/numtraces_plots.py))
   - Use these classifiers to predict classes and class probabilities
   - Compute Domingos bias--variance decomposition for multiclass 0--1 loss [1]
   - Compute Guessing Entropy bias--variance decomposition
@@ -14,7 +15,7 @@ This repository contains code related to the 'Bias-variance Decomposition in Mac
 	  - CNN
 
 **However, this repository does not include any data.** Please download any of your favorite SCA datasets (e.g. DPAv4, AES_HD, AED_RD, ASCAD, ...) and adjust the code as follows:
-  - In **load_data.py**, implement the following functions:
+  - In [**load_data.py**](https://github.com/f4eTrTT0c/BiasVarianceDecomposition/blob/master/load_data.py), implement the following functions:
 	  - **load_data()** should return 6 numpy arrays: (*x_train, y_train, x_validate, y_validate, x_test, y_test*)
 		  - *x_train* denotes the profiling traces, which should be an *N* x *p* numpy array if the number of training traces is *N*, which each tracing having *p* features;
 		  - *y_train* denotes the profiling labels, based on any leakage model (e.g. HW or intermediate value), and should be a 1-dimensional array consisting of *N* integers.
@@ -30,11 +31,16 @@ This repository contains code related to the 'Bias-variance Decomposition in Mac
 
 ## Installation
 Experiments were run on Python 3.6 with scikit-learn 0.20.3, tensorflow-gpu 1.13.1 and keras 2.2.4. In principle, we encourage to always use the latest version. A Python 3.6 environment should contain the following packages:
+
 `pip install numpy`
+
 `pip install pandas`
+
 `pip install scikit-learn`
+
 `pip install tensorflow` (or: `pip install tensorflow-gpu` when running on GPU)
+
 `pip install keras`
 
 ## References
-[1] Domingos,P.: A unified bias-variance decomposition and its applications. In: Langley, P. (ed.) Proceedings of the Seventeenth International Conference on Machine Learning (ICML 2000), Stanford University, Stanford, CA, USA, June 29–July 2, 2000, pp. 231–238. Morgan Kaufmann (2000)
+[1] Domingos,P.:A unified bias-variance decomposition and its applications. In: Langley, P. (ed.) Proceedings of the Seventeenth International Conference on Machine Learning (ICML 2000), Stanford University, Stanford, CA, USA, June 29–July 2, 2000, pp. 231–238. Morgan Kaufmann (2000) 
